@@ -1,6 +1,8 @@
 from datetime import datetime
 
+#Variables
 date_format = "%d-%m-%Y"     #VARIABLE created for better simplicity date_time can not be called instead of "%d-%m-%Y"
+CATEGORIES = {"I": "Income", "E": "Expense"}
 
 def get_date(prompt, allow_default=False):
     date_str = input(prompt)
@@ -26,7 +28,12 @@ def get_amount():
         return get_amount()
 
 def get_category():
-    pass
+    category = input("Enter the category ('I' for Income or 'E' for Expense): ").upper()    #converted to uppercase
+    if category in CATEGORIES:  #if user category is in the category options
+        return CATEGORIES[category]
+    
+    print("Invalid category. Please enter 'I' for Incone or 'E' for Expense.")      #Repeated until a valid category is given
+    return get_category()
 
 def get_description():
-    pass
+    return input("Enter a description (optional)")
