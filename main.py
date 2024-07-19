@@ -1,7 +1,7 @@
 import pandas as pd
 import csv
 from datetime import datetime
-
+from data_entry import get_amount, get_category, get_date, get_description  #importing from the "data_entry" file into this one
 
 class CSV: 
     CSV_FILE = "finance_data.csv"
@@ -27,6 +27,12 @@ class CSV:
             writer = csv.DictWriter(csvfile, fieldnames=cls.COLUMNS)
             writer.writerow(new_entry)
         print("Entry added successfully")
+
+
+def add():
+    CSV.initialize_csv()
+    date = get_date("Enter the date of the transaction ()")
+    amount = get_amount ()
 
 CSV.initialize_csv()    #TEST to see if it creates the directory "finance_data.csv"
 CSV.add_entry("14-07-2024", 125.65, "Income", "Salary")
